@@ -9,11 +9,6 @@ import json
 
 currentId = 0
 # Manipulate data from registration fields
-def funcion1():
-    myVar=0
-def funcion2(myVar):
-    myVar += 1
-    return myVar
 
 def send_data():
 
@@ -51,7 +46,6 @@ def send_data():
     currentId += 1
 
     listOfQuestions.append(aList)
-    funcion2(currentId)
 
     jsonString = json.dumps(listOfQuestions)
     jsonFile = open("quiz.json", 'w')
