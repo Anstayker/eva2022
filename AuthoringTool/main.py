@@ -1,37 +1,62 @@
-#import tkinter as tk
-#from tkinter import ttk
+# import tkinter as tk
+# from tkinter import ttk
 
-#from Checkbox import Checkbox
+# from Checkbox import Checkbox
 
 
 from tkinter import *
+import json
+
 
 # Manipulate data from registration fields
 def send_data():
-    username_info = username.get()
-    password_info = password.get()
-    fullname_info = fullname.get()
-    age_info = str(age.get())
-    print(username_info, "\t", password_info, "\t", fullname_info, "\t", age_info)
+    pregunta_info = pregunta.get()
+    opcionA_info = opcionA.get()
+    opcionB_info = opcionB.get()
+    opcionC_info = opcionC.get()
+
+    resCorrecta = optionMenuVar.get()
+    if(resCorrecta=="Opción A"):
+        resCorrecta = opcionA_info
+    if(resCorrecta == "Opción B"):
+        resCorrecta = opcionB_info
+    if(resCorrecta=="Opción C"):
+        resCorrecta = opcionC_info
+
+    currentId = 1;
 
     #  Open and write data to a file
-    file = open("user.txt", "a")
-    file.write(username_info)
-    file.write("\t")
-    file.write(password_info)
-    file.write("\t")
-    file.write(fullname_info)
-    file.write("\t")
-    file.write(age_info)
-    file.write("\t\n")
-    file.close()
-    print(" New user registered. Username: {} | FullName: {}   ".format(username_info, fullname_info))
-
-    #  Delete data from previous event
-    username_entry.delete(0, END)
-    password_entry.delete(0, END)
-    fullname_entry.delete(0, END)
-    age_entry.delete(0, END)
+    aList = [
+        {
+            'id': currentId,
+            'question': pregunta_info,
+            'options': [
+                {"a": opcionA_info,
+                 "b": opcionB_info,
+                 "c": opcionC_info}
+            ],
+            "answer": resCorrecta,
+            "score": 0,
+            "status": ""
+        },
+        {
+            'id': currentId + 1,
+            'question': pregunta_info,
+            'options': [
+                {"a": opcionA_info,
+                 "b": opcionB_info,
+                 "c": opcionC_info}
+            ],
+            "answer": resCorrecta,
+            "score": 0,
+            "status": ""
+        }
+    ]
+    jsonString = json.dumps(aList)
+    jsonFile = open("quiz.json", 'w')
+    jsonFile.write(jsonString)
+    jsonFile.close()
+    print(jsonString)
 
 
 # Create new instance - Class Tk()
@@ -45,43 +70,59 @@ main_title = Label(text="Python Form | TRUZZ BLOGG", font=("Cambria", 14), bg="#
 main_title.pack()
 
 # Define Label Fields
-username_label = Label(text="Username", bg="#FFEEDD")
-username_label.place(x=22, y=70)
-password_label = Label(text="Password", bg="#FFEEDD")
-password_label.place(x=22, y=130)
-fullname_label = Label(text="Fullname", bg="#FFEEDD")
-fullname_label.place(x=22, y=190)
-age_label = Label(text="Age", bg="#FFEEDD")
-age_label.place(x=22, y=250)
-
-# CheckBox
-checkbox = Checkbutton(text="Opcion")
-checkbox.place(width=10, height=10)
+pregunta_label = Label(text="Ingrese la pregunta", bg="#FFEEDD")
+pregunta_label.place(x=22, y=70)
+opcionA_label = Label(text="Opción A", bg="#FFEEDD")
+opcionA_label.place(x=22, y=130)
+opcionB_label = Label(text="Opción B", bg="#FFEEDD")
+opcionB_label.place(x=22, y=190)
+opcionC_label = Label(text="Opción C", bg="#FFEEDD")
+opcionC_label.place(x=22, y=250)
 
 # Get and store data from users
-username = StringVar()
-password = StringVar()
-fullname = StringVar()
-age = StringVar()
+pregunta = StringVar()
+opcionA = StringVar()
+opcionB = StringVar()
+opcionC = StringVar()
 
-username_entry = Entry(textvariable=username, width=40)
-password_entry = Entry(textvariable=password, width=40, show="*")
-fullname_entry = Entry(textvariable=fullname, width=40)
-age_entry = Entry(textvariable=age, width=40)
+pregunta_entry = Entry(textvariable=pregunta, width=40)
+opcionA_entry = Entry(textvariable=opcionA, width=40)
+opcionB_entry = Entry(textvariable=opcionB, width=40)
+opcionC_entry = Entry(textvariable=opcionC, width=40)
 
-username_entry.place(x=22, y=100)
-password_entry.place(x=22, y=160)
-fullname_entry.place(x=22, y=220)
-age_entry.place(x=22, y=280)
+pregunta_entry.place(x=22, y=100)
+opcionA_entry.place(x=22, y=160)
+opcionB_entry.place(x=22, y=220)
+opcionC_entry.place(x=22, y=280)
+
+# Drop Down
+
+options = [
+    "Opción A",
+    "Opción B",
+    "Opción C"
+]
+
+optionMenuVar = StringVar()
+optionMenuVar.set(options[0])
+
+optionSelected = StringVar()
+optionSelected.set(options[0])
+
+dropDown_label = Label(text="Seleccione la respuesta", bg="#FFEEDD")
+dropDown_label.place(x=22, y=310)
+
+drop = OptionMenu(myWindow, optionSelected, *options)
+drop.place(x=22, y=340)
+
+#w = OptionMenu(optionMenuVar, *options)
+#w.pack()
 
 # Submit Button
-submit_btn = Button(myWindow, text="Submit Info", width="30", height="2", command=send_data, bg="#00CD63")
-submit_btn.place(x=22, y=320)
+submit_btn = Button(myWindow, text="Subir pregunta", width="30", height="2", command=send_data, bg="#00CD63")
+submit_btn.place(x=22, y=400)
 
 myWindow.mainloop()
-
-
-
 
 """"
 
@@ -143,4 +184,3 @@ window.mainloop()
 ------------------------------------------------
 
 """
-
