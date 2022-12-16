@@ -7,7 +7,7 @@ import tkinter
 from tkinter import *
 import json
 
-currentId = 0
+currentId = 1
 # Manipulate data from registration fields
 
 def send_data():
