@@ -1,6 +1,6 @@
 var quiz = {
-	"JS": [{"id": 1, "question": "lenguae de progra", "options": [{"a": "java", "b": "word", "c": "excel"}], "answer": "java", "score": "0", "status": ""}], [{"id": 2, "question": "asdsf", "options": [{"a": "sdf", "b": "sdf", "c": "sdf"}], "answer": "sdf", "score": "0", "status": ""}]
-}
+	"JS": 
+	[{"id": 1, "question": "LENJDSF", "options": [{"a": "java", "b": "wod", "c": "dedxce"}], "answer": "java", "score": 0, "status": ""}, {"id": 2, "question": "kjlkjklg", "options": [{"a": "jkghj", "b": "hgjh", "c": "hgjgh"}], "answer": "jkghj", "score": 0, "status": ""}]}
 
 
 function CompletarCurso() {

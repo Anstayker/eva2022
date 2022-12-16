@@ -37,7 +37,7 @@ def send_data():
                  "c": opcionC_info}
             ],
             "answer": resCorrecta,
-            "score": "0",
+            "score": 0,
             "status": ""
         }
 
