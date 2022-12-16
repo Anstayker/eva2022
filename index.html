@@ -1,87 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Test app</title>
-    <link rel="stylesheet" href="css/styleIndex.css">
-    <script src="js/item.js"></script>
-    <script src="js/itemOperation.js"></script>
-    <script src="js/controller.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 </head>
+
 <body>
-    <div class="tile">    
-    <Fieldset>
-         
-        <legend><h1>Quetions for test</h1></legend>
-        <div class="display">
-           <table>
-            <tr>
-                <td><label for="">Ques no</label></td>
-                <td><label id="quesid"></label></td>
-            </tr>
-            <tr>
-                <td><label for="">Question</label></td>
-                <td><textarea  id="ques" cols="30" rows="5"></textarea></td>
-            </tr>
-            <tr>
-                <td><label for="">Option 1</label></td>
-                <td><input id="option1" type="text" placeholder="Enter option 1"></td>
-            </tr>
-            <tr>
-                <td><label for="">Option 2</label></td>
-                <td><input id="option2" type="text" placeholder="enter option 2"></td>
-            </tr>
-            <tr>
-                <td><label for="">Option 3</label></td>
-                <td><input id="option3" type="text" placeholder="Enter option 3"></td>
-            </tr>
-            <tr>
-                <td><label for="">Option 4</label></td>
-                <td><input id="option4" type="text" placeholder="Enter option 4"></td>
-            </tr>
-            <tr>
-                <td><label for="">Answer</label></td>
-                <td><input id="ans" type="number" placeholder="Enter correct option no "></td>
-            </tr>
-        </table>
-        <h2>Total records are <span id="total"></span> Mark Records are <span id="marktotal"></h2>
-        <table>
-            <tr>
-                <td><button id="add">Add</button></td>
-                <td><button id="delete">Delete</button></td>
-                <td><button id="update">Update</button></td>
-                <td><button>Search</button></td>
-                <td><button id="savelocal">Save Local</button></td>
-				<td><button id="fetchlocal">Fetch Local</button></td>
-				
-                <td><button id="clear">Clear</button></td>
-                <td><button><a href="test.html">Take test</a></button></td>
-            </tr>
-        </table>
-        </div>
-    </Fieldset>
-    <fieldset>
-        <legend>Question List</legend>
-        <div class="display">
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Qno</th>
-                    <th>Question</th>
-                    <th>Option 1</th>
-                    <th>Option 2</th>
-                    <th>Option 3</th>
-                    <th>Option 4</th>
-                    <th>Answer</th>
-                    <th>Operation</th>
-                </tr>
-            </thead> 
-            <tbody id="itemtable">
-                
-    </tbody>           
-        </table>
-    </div>
-    </fieldset>
-    </div>
+    <header class="header bg-primary">
+        <div class="left-title">JS Quiz</div>
+        <div class="right-title">Total Questions: <span id="tque"></span></div>
+        <div class="clearfix"></div>
+    </header>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="result" class="quiz-body">
+                        <form name="quizForm" onSubmit="">
+                            <fieldset class="form-group">
+                                <h4><span id="qid">1.</span> <span id="question"></span></h4>
+                                <div class="option-block-container" id="question-options"> </div>
+                                <!-- End of option block -->
+                            </fieldset> <button name="previous" id="previous" class="btn btn-success">Previous</button>
+                            &nbsp; <button name="next" id="next" class="btn btn-success">Next</button>
+                        </form>
+                    </div>
+                </div> <!-- End of col-sm-12 -->
+            </div> <!-- End of row -->
+        </div> <!-- ENd of container fluid -->
+    </div> <!-- End of content -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <script src="app.js"></script>
 </body>
+
 </html>
