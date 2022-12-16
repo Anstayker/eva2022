@@ -28,8 +28,7 @@ def send_data():
         resCorrecta = opcionC_info
 
     #  Open and write data to a file
-    aList = [
-        {
+    aList = {
             'id': currentId,
             'question': pregunta_info,
             'options': [
@@ -40,8 +39,7 @@ def send_data():
             "answer": resCorrecta,
             "score": "0",
             "status": ""
-        },
-    ]
+        }
 
     currentId += 1
 
