@@ -202,6 +202,8 @@ var quiz = {
 			"score": 0,
 			"status": ""
 		},
+		{"id": 15, "question": "LENGUAJE DE PROGRA", "options": [{"a": "JAVA", "b": "WORD", "c": "EXCEL"}], "answer": "JAVA", "score": 0, "status": ""}
+		
 
 		/*
 	
