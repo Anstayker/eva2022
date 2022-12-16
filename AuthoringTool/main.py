@@ -53,6 +53,9 @@ def send_data():
     jsonFile.close()
     dropDown_label.place(x=22, y=310)
 
+    navigation_label = Label(text=str(currentId) + "/" + str(currentId))
+    navigation_label.place(x=125, y=423)
+
     pregunta_entry.delete(0, tkinter.END)
     opcionA_entry.delete(0, tkinter.END)
     opcionB_entry.delete(0, tkinter.END)
@@ -138,7 +141,7 @@ score_entry.place(x=50, y=420)
 back_btn = Button(myWindow, text="<-", width=5, height=1, bg="#00CD63")
 back_btn.place(x=22, y=420)
 
-navigation_label = Label(text=str(1) + "/" + str(5))
+navigation_label = Label(text=str(currentId) + "/" + str(currentId))
 navigation_label.place(x=125, y=423)
 
 back_btn = Button(myWindow, text="->", width=5, height=1, bg="#00CD63")
