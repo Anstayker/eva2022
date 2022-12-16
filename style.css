@@ -8,6 +8,9 @@
   width: 100%;
   z-index: 9999;
 }
+.cabecera{
+  background-color: lightgreen;
+}
 .left-title {
   width: 80px;
   color: #fff;
@@ -55,4 +58,29 @@
   border-bottom: 1px solid #ccc;
   margin-bottom: 15px;
   padding-bottom: 15px;
+  margin-top: 60px;
+}
+
+#nombreAlumno{
+  color: white;
+}
+
+#question-options{
+  margin-left: 35%;
+}
+
+.boton1{
+  margin-left: 40%;
+}
+
+.boton2{
+  margin-left: 5%;
+}
+
+.form-group{
+  margin-top: 60px;
+}
+
+#qid{
+  margin-left: 35%;
 }

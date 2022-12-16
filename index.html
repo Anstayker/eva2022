@@ -10,16 +10,61 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <script type="text/javascript" src="SCORM_API_wrapper.js"></script>
+    <script type="text/javascript">
+        var scorm = pipwerks.SCORM;
+        function init() {
+            scorm.version = "1.2";
+            Mensaje("Iniciando el cuestionario.");
+            var callSucceeded = scorm.init();
+            Mensaje("Cuestionario iniciado correctamente? " + callSucceeded);
+        }
+
+        function CompletarCurso() {
+            Mensaje("Marcando cuestionario como Completado.");
+            var callSucceeded = scorm.set("cmi.core.lesson_status", "completed");
+            Mensaje("Cuestionario Completado? " + callSucceeded);
+        }
+
+        function ObtenerNombre() {
+            var nombreUser = scorm.get("cmi.core.student_name");
+            document.getElementById('Nombre').innerHTML = '<b>' + nombreUser + '</b>';
+        }
+
+        function end() {
+            Mensaje("Conexion terminada.");
+            var callSucceeded = scorm.quit();
+            Mensaje("Termino correctamente? " + callSucceeded);
+        }
+
+        function Mensaje(msg) {
+            alert(msg);
+        }
+
+
+
+
+        window.onload = function () {
+            init();
+        }
+
+        window.onunload = function () {
+            end();
+        }
+
+    </script>
 </head>
 
 <body>
-    <header class="header bg-primary">
+    <header class="header cabecera">
+        <div id="nombreAlumno"></div>
         <div class="left-title">JS Quiz</div>
+        <div class="right-title"><span id="date"></span></div>
         <div class="right-title">Total Questions: <span id="tque"></span></div>
         <div class="clearfix"></div>
     </header>
-    <div class="content">
-        <div class="container-fluid">
+    <div class="content ">
+        <div class="container-fluid ">
             <div class="row">
                 <div class="col-sm-12">
                     <div id="result" class="quiz-body">
@@ -28,14 +73,15 @@
                                 <h4><span id="qid">1.</span> <span id="question"></span></h4>
                                 <div class="option-block-container" id="question-options"> </div>
                                 <!-- End of option block -->
-                            </fieldset> <button name="previous" id="previous" class="btn btn-success">Previous</button>
-                            &nbsp; <button name="next" id="next" class="btn btn-success">Next</button>
+                            </fieldset> <button name="previous" id="previous" class="btn btn-success boton1">Previous</button>
+                            &nbsp; <button name="next" id="next" class="btn btn-success boton2">Next</button>
                         </form>
                     </div>
                 </div> <!-- End of col-sm-12 -->
             </div> <!-- End of row -->
         </div> <!-- ENd of container fluid -->
     </div> <!-- End of content -->
+    <div id="botonTerminar"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
     <script src="app.js"></script>
