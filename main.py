@@ -11,8 +11,8 @@ from zipfile import ZipFile
 
 currentId = 1
 
-def get_all_file_paths(directory):
 
+def get_all_file_paths(directory):
     # initializing empy file paths list
     file_paths = []
 
@@ -26,9 +26,10 @@ def get_all_file_paths(directory):
     # returning all file paths
     return file_paths
 
+
 def make_json():
     # path to folder which needs to be zipped
-    directory = './eva2022'
+    directory = './'
 
     # calling function to get all file paths in the directory
     file_paths = get_all_file_paths(directory)
@@ -39,7 +40,7 @@ def make_json():
         print(file_name)
 
     # writing files to a zipfile
-    with ZipFile('my_python_files.zip', 'w') as zip:
+    with ZipFile('Scorm_Package.zip', 'w') as zip:
         # writing each file one by one
         for file in file_paths:
             zip.write(file)
@@ -48,7 +49,6 @@ def make_json():
 
 
 def send_data():
-
     global currentId
 
     pregunta_info = pregunta.get()
@@ -66,17 +66,17 @@ def send_data():
 
     #  Open and write data to a file
     aList = {
-            'id': currentId,
-            'question': pregunta_info,
-            'options': [
-                {"a": opcionA_info,
-                 "b": opcionB_info,
-                 "c": opcionC_info}
-            ],
-            "answer": resCorrecta,
-            "score": 0,
-            "status": ""
-        }
+        'id': currentId,
+        'question': pregunta_info,
+        'options': [
+            {"a": opcionA_info,
+             "b": opcionB_info,
+             "c": opcionC_info}
+        ],
+        "answer": resCorrecta,
+        "score": 0,
+        "status": ""
+    }
 
     currentId += 1
 
@@ -113,7 +113,6 @@ main_title.pack()
 
 listOfQ = []
 listOfQuestions = []
-
 
 # Define Label Fields
 pregunta_label = Label(text="Ingrese la pregunta", bg="#FFEEDD")
