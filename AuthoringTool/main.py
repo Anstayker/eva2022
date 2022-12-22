@@ -6,9 +6,46 @@ import tkinter
 
 from tkinter import *
 import json
+import os
+from zipfile import ZipFile
 
 currentId = 1
-# Manipulate data from registration fields
+
+def get_all_file_paths(directory):
+
+    # initializing empy file paths list
+    file_paths = []
+
+    # crawling through directory and subdirectories
+    for root, directories, files in os.walk(directory):
+        for filename in files:
+            # join the two strings in order to form the full filepath
+            filepath = os.path.join(root, filename)
+            file_paths.append(filepath)
+
+    # returning all file paths
+    return file_paths
+
+def make_json():
+    # path to folder which needs to be zipped
+    directory = './eva2022'
+
+    # calling function to get all file paths in the directory
+    file_paths = get_all_file_paths(directory)
+
+    # printing the list of all files to be zipped
+    print('Following files will be zipped in this program: ')
+    for file_name in file_paths:
+        print(file_name)
+
+    # writing files to a zipfile
+    with ZipFile('my_python_files.zip', 'w') as zip:
+        # writing each file one by one
+        for file in file_paths:
+            zip.write(file)
+
+    print('All files zipped successfully')
+
 
 def send_data():
 
@@ -64,7 +101,7 @@ def send_data():
 
 # Create new instance - Class Tk()
 myWindow = Tk()
-myWindow.geometry("350x600")
+myWindow.geometry("280x600")
 myWindow.title("Cuestionario")
 myWindow.resizable(False, False)
 myWindow.config(background="#213141")
@@ -148,6 +185,10 @@ back_btn.place(x=197, y=420)
 # Submit Button
 submit_btn = Button(myWindow, text="Subir pregunta", width="30", height="2", command=send_data, bg="#00CD63")
 submit_btn.place(x=22, y=450)
+
+# Make Json Button
+submit_btn = Button(myWindow, text="Empaquetar", width="30", height="2", command=make_json, bg="#00CD63")
+submit_btn.place(x=22, y=495)
 
 myWindow.mainloop()
 
