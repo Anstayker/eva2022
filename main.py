@@ -55,6 +55,7 @@ def send_data():
     opcionA_info = opcionA.get()
     opcionB_info = opcionB.get()
     opcionC_info = opcionC.get()
+    puntaje_info = score_entry.get()
 
     resCorrecta = optionSelected.get()
     print(resCorrecta)
@@ -76,7 +77,8 @@ def send_data():
         ],
         "answer": resCorrecta,
         "score": 0,
-        "status": ""
+        "status": "",
+        "puntaje": puntaje_info
     }
 
     currentId += 1
@@ -90,7 +92,7 @@ def send_data():
     dropDown_label.place(x=22, y=310)
 
     navigation_label = Label(text=str(currentId) + "/" + str(currentId))
-    navigation_label.place(x=125, y=423)
+    navigation_label.place(x=125, y=458)
 
     pregunta_entry.delete(0, tkinter.END)
     opcionA_entry.delete(0, tkinter.END)
@@ -102,7 +104,7 @@ def send_data():
 
 # Create new instance - Class Tk()
 myWindow = Tk()
-myWindow.geometry("280x600")
+myWindow.geometry("280x650")
 myWindow.title("Cuestionario")
 myWindow.resizable(False, False)
 myWindow.config(background="#213141")
@@ -161,7 +163,7 @@ dropDown_label.place(x=22, y=310)
 drop = OptionMenu(myWindow, optionSelected, *options)
 drop.place(x=22, y=340)
 
-"""
+
 # Score Label
 
 score_label = Label(text="Asigne un puntaje", bg="#FFEEDD")
@@ -170,25 +172,25 @@ score_label.place(x=22, y=390)
 score = IntVar()
 score_entry = Entry(textvariable=score, width=10)
 score_entry.place(x=50, y=420)
-"""
+
 
 # Action Buttons
 back_btn = Button(myWindow, text="<-", width=5, height=1, bg="#00CD63")
-back_btn.place(x=22, y=420)
+back_btn.place(x=22, y=455)
 
 navigation_label = Label(text=str(currentId) + "/" + str(currentId))
-navigation_label.place(x=125, y=423)
+navigation_label.place(x=125, y=458)
 
 back_btn = Button(myWindow, text="->", width=5, height=1, bg="#00CD63")
-back_btn.place(x=197, y=420)
+back_btn.place(x=197, y=455)
 
 # Submit Button
 submit_btn = Button(myWindow, text="Subir pregunta", width="30", height="2", command=send_data, bg="#00CD63")
-submit_btn.place(x=22, y=450)
+submit_btn.place(x=22, y=485)
 
 # Make Json Button
 submit_btn = Button(myWindow, text="Empaquetar", width="30", height="2", command=make_json, bg="#00CD63")
-submit_btn.place(x=22, y=495)
+submit_btn.place(x=22, y=530)
 
 myWindow.mainloop()
 
