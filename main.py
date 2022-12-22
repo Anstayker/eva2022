@@ -56,7 +56,8 @@ def send_data():
     opcionB_info = opcionB.get()
     opcionC_info = opcionC.get()
 
-    resCorrecta = optionMenuVar.get()
+    resCorrecta = optionSelected.get()
+    print(resCorrecta)
     if (resCorrecta == "Opción A"):
         resCorrecta = opcionA_info
     if (resCorrecta == "Opción B"):
